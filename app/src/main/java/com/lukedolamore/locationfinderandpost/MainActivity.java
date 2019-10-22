@@ -103,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
                         throws AuthFailureError {
                     Map<String, String> parameters
                             = new HashMap<String, String>();
-                    //parameters.put("userid", "19");
                     parameters.put("userid", editTextUserID.getText().toString());
                     parameters.put("latitude",
                             Double.toString(lastLocation.getLatitude()));

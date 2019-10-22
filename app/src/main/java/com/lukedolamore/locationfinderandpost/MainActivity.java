@@ -49,7 +49,10 @@ public class MainActivity extends AppCompatActivity {
                 PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-        { return; }
+        { ActivityCompat.requestPermissions(this, new String[]{
+                Manifest.permission.INTERNET, Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+        },101); }
 
         getLocation();
     }//onCreate

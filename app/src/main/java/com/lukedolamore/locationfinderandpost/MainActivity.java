@@ -31,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
     TextView textSummary;
     Button buttonSave;
     EditText editTextDescription;
+    EditText editTextUserID;
     Location lastLocation = null;
     FusedLocationProviderClient mFusedLocationClient;
     String posturl = "http://developer.kensnz.com/api/addlocdata";
     //://developer.kensnz.com/getlocdata
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSave = findViewById(R.id.buttonSave);
         textSummary = findViewById(R.id.textSummary);
         editTextDescription = findViewById(R.id.editTextDescription);
+        editTextUserID = findViewById(R.id.editTextUserID);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         if (ActivityCompat.checkSelfPermission(
                 this, Manifest.permission.ACCESS_FINE_LOCATION) !=
@@ -53,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
                 Manifest.permission.INTERNET, Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION
         },101); }
-
         getLocation();
     }//onCreate
 
@@ -103,7 +103,8 @@ public class MainActivity extends AppCompatActivity {
                         throws AuthFailureError {
                     Map<String, String> parameters
                             = new HashMap<String, String>();
-                    parameters.put("userid", "19");
+                    //parameters.put("userid", "19");
+                    parameters.put("userid", editTextUserID.getText().toString());
                     parameters.put("latitude",
                             Double.toString(lastLocation.getLatitude()));
                     parameters.put("longitude",
